@@ -6,7 +6,12 @@ import com.mediasoft.product.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
+
 import java.util.Date;
+import java.util.List;
 
 @DataJpaTest
 public class ProductRepositoryMockTest {
@@ -24,5 +29,9 @@ public class ProductRepositoryMockTest {
                 .createdAt(new Date())
                 .category(Category.builder().id(1L).build())
                 .build();
+        productRepository.save(prod1);
+
+        List<Product> products = productRepository.findByCategory(prod1.getCategory());
+        assertThat(products.size(), is(equalTo(3)));
     }
 }
