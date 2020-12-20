@@ -19,8 +19,7 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "code", nullable = false, unique = true)
-    private String code;
+
     @Column(nullable = false)
     private String name;
     private String description;
@@ -38,6 +37,8 @@ public class Product {
     @JoinColumn(name = "category_id")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Category category;
+    @Column(name = "code", nullable = false, unique = true)
+    private String code;
 
 
 }

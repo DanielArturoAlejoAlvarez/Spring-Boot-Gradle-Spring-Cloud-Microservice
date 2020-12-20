@@ -3,6 +3,7 @@ package com.mediasoft.product.service;
 import com.mediasoft.product.entity.Category;
 import com.mediasoft.product.entity.Product;
 import com.mediasoft.product.repository.ProductRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,9 +11,10 @@ import java.util.Date;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class ProductService implements IProductService{
-    @Autowired
-    private ProductRepository repo;
+    //@Autowired
+    private final ProductRepository repo;
 
     @Override
     public List<Product> listAllProduct() {

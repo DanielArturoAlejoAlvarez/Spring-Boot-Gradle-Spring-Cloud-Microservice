@@ -21,7 +21,7 @@ public class ProductRepositoryMockTest {
     private ProductRepository repo;
 
     @Test
-    public void whenFindByCategory_thenReturnProductList() {
+    public void whenFindByCategory_ThenReturnProductList() {
         Product prod1 = Product.builder()
                 .code("C-255")
                 .category(Category.builder().id(1L).build())
