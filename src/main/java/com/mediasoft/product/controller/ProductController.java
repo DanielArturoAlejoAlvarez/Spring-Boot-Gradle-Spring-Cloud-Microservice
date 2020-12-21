@@ -77,4 +77,13 @@ public class ProductController {
         return ResponseEntity.ok(delPro);
     }
 
+    @GetMapping(value = "/{id}/stock")
+    public ResponseEntity<Product> updStockProduct(@PathVariable("id") Long id, @RequestParam(name = "qty",required = true) Double qty) {
+        Product product = service.updStock(id,qty);
+        if (null==product){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(product);
+    }
+
 }
