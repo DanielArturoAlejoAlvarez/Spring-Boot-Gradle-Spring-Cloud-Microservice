@@ -8,7 +8,6 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-
 import com.mediasoft.product.service.IProductService;
 import com.mediasoft.product.service.ProductService;
 import org.junit.jupiter.api.BeforeEach;
@@ -43,7 +42,7 @@ public class ProductServiceMockTest {
                 .build();
 
         Mockito.when(repo.findById(1L)).thenReturn(Optional.of(computer));
-
+        Mockito.when(repo.save(computer)).thenReturn(computer);
     }
 
     @Test
@@ -51,4 +50,10 @@ public class ProductServiceMockTest {
         Product result = service.getProduct(1L);
         assertThat(result.getName(), is(equalTo("Notebook Pro")));
     }
+
+    public void whenValidUpdateStock_ThenReturnNewStock() {
+        Product newStock = service.updStock(1L,Double.parseDouble("10"));
+        assertThat(newStock.getStock(), is(equalTo(490)));
+    }
+
 }
