@@ -58,4 +58,14 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.CREATED).body(newPro);
     }
 
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Product> updateProduct(@PathVariable("id") Long id, @RequestBody Product product) {
+        product.setId(id);
+        Product updPro = service.updateProduct(product);
+        if (null==updPro) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.status(HttpStatus.CREATED).body(updPro);
+    }
+
 }
