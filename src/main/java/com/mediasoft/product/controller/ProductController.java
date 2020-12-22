@@ -102,7 +102,7 @@ public class ProductController {
     private String formatMessage(BindingResult result) {
         //Get Object Error Message
         List<Map<String,String>> errors = result.getFieldErrors().stream()
-                .map(err -> {
+                .map(err ->{
                     Map<String,String> error = new HashMap<>();
                     error.put(err.getField(), err.getDefaultMessage());
                     return error;
