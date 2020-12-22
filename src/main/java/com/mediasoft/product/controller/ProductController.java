@@ -99,7 +99,7 @@ public class ProductController {
         return ResponseEntity.ok(product);
     }
 
-    public String formatMessage(BindingResult result) {
+    private String formatMessage(BindingResult result) {
         //Get Object Error Message
         List<Map<String,String>> errors = result.getFieldErrors().stream()
                 .map(err -> {
