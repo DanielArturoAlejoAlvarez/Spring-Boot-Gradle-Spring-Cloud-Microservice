@@ -32,7 +32,6 @@ public class InvoiceItem {
         }
     }
 
-
     public InvoiceItem() {
         this.qty = (double) 0;
         this.price = (double) 0;
